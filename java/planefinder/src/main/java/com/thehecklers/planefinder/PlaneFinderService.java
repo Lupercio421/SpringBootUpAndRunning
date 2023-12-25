@@ -28,7 +28,7 @@ public class PlaneFinderService {
         om = new ObjectMapper();
     }
 
-    public Iterable<Aircraft> getAircraft() {
+    public Flux<Aircraft> getAircraft() {
         List<Aircraft> positions = new ArrayList<>();
 
         try {
@@ -59,7 +59,7 @@ public class PlaneFinderService {
         }
     }
 
-    private Iterable<Aircraft> saveSamplePositions() {
+    private Flux<Aircraft> saveSamplePositions() {
         final Random rnd = new Random();
 
         repo.deleteAll();

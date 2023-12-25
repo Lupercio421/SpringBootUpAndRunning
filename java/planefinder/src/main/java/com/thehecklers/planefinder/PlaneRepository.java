@@ -2,5 +2,5 @@ package com.thehecklers.planefinder;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface PlaneRepository extends CrudRepository<Aircraft, Long> {
+public interface PlaneRepository extends ReactiveCrudRepository<Aircraft, Long> {
 }

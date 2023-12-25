@@ -16,7 +16,7 @@ public class PlaneController {
 
     @ResponseBody
     @GetMapping("/aircraft")
-    public Iterable<Aircraft> getCurrentAircraft() throws IOException {
+    public Flux<Aircraft> getCurrentAircraft() throws IOException {
         return pfService.getAircraft();
     }
 }
