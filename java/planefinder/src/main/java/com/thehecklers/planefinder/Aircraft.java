@@ -11,14 +11,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.time.Instant;
 
-@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Aircraft {
     @Id
-    @GeneratedValue
     private Long id;
     private String callsign, squawk, reg, flightno, route, type, category;
 
