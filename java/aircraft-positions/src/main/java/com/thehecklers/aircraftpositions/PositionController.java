@@ -17,16 +17,13 @@ public class PositionController {
 
     @GetMapping("/aircraft")
     public String getCurrentAircraftPositions(Model model) {
-        repository.deleteAll();
-
-        client.get()
-                .retrieve()
-                .bodyToFlux(Aircraft.class)
-                .filter(plane -> !plane.getReg().isEmpty())
-                .toStream()
-                .forEach(repository::save);
-
-        model.addAttribute("currentPositions", repository.findAll());
+        Flux<Aircraf> aircrafFlux = repository.deleteAll()
+                .thenMany(client.get()
+                        .retrieve()
+                        .bodyToFlux(Aircraft.class)
+                        .filter(plan -> !plane.getReg().isEmpty())
+                        .flatMap(repository::save));
+        model.addAttribute("currentPositions", aircrafFlux);
         return "positions";
     }
 }
